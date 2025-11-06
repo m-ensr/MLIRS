@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLIRS</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
+    <link href="../assets/css/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 dark:bg-black min-h-screen">
+    <!-- Arka plan - bg-muted -->
+    <div class="flex flex-col h-screen">
+        <header class="flex items-center justify-between fixed z-10 top-0 start-0 end-0 shrink-0 bg-gray-100 dark:bg-black px-4 lg:px-7.5 h-(--header-height-mobile) lg:h-(--header-height)">
+            <!-- !Sol Taraf -->
+            <div class="flex items-center gap-3">
+                <div class="flex gap-2.5 lg:hidden items-center -ms-1">
+                    <!-- Mobil Sidebar Butonu -->
+                    <div class="flex items-center">
+                        <button id="mobil_sidebar_buton" class="eo-header-btn eo-btn-icon">
+                            <iconify-icon icon="line-md:close-to-menu-alt-transition"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Mobil Logo -->
+                    <a class="shrink-0 ms-1" href="../templates/index.html">
+                        <span class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-500 whitespace-nowrap">Logo</span>
+                    </a>
+                </div>
+
+                <!-- Logo -->
+                <div class="hidden lg:flex items-center">
+                    <a href="../templates/index.html" class="flex items-center gap-2 p-1.5 rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 group -ms-2">
+                        <span class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-500 whitespace-nowrap">Logo</span>
+                    </a>
+                </div>
+            </div>
+
+            <!--! Sağ Taraf -->
+            <div class="flex items-center gap-2">
+                <button class="eo-header-btn hidden lg:flex">
+                    <iconify-icon icon="line-md:cog-filled-loop" class="text-md pr-1"></iconify-icon>
+                    Admin
+                </button>
+
+                <button class="eo-btn-icon eo-header-btn" id="flag-toggle" lang="tr">
+                    <iconify-icon icon="circle-flags:tr" id="flag-icon" class="text-lg"></iconify-icon>
+                </button>
+
+                <!-- *Karanlık Şeysi -->
+                <button id="themeToggle" class="eo-header-btn eo-btn-icon">
+                    <iconify-icon icon="line-md:sunny-filled-loop-to-moon-filled-loop-transition" class="dark:hidden text-lg"></iconify-icon>
+                    <iconify-icon icon="line-md:moon-filled-to-sunny-filled-loop-transition" class="hidden dark:inline-block dark:text-gray-50 text-lg"></iconify-icon>
+                </button>
+
+                <!-- *Header Profil -->
+                <div class="relative">
+                    <div id="profil_buton" class="eo-header-avatar">
+                        <img src="../assets/images/avatar/avatar.png" alt="User Avatar">
+                    </div>
+
+                    <div id="profil_menu" class="hidden absolute right-0 mt-2 w-[250px] bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 overflow-hidden z-50">
+                        <div class="flex items-center justify-between px-2.5 py-1.5 border-b border-gray-200 dark:border-gray-800">
+                            <div class="flex items-center gap-1 min-w-0 flex-1">
+                                <div class="w-8 h-8 rounded-lg overflow-hidden shrink-0">
+                                    <img alt="avatar" class="w-full h-full object-cover" src="../assets/images/avatar/avatar.png"/>
+                                </div>
+
+                                <div class="flex flex-col gap-1 p-2.5 min-w-0 flex-1">
+                                    <span class="text-sm text-gray-900 dark:text-white font-semibold leading-none truncate">
+                                        Ensar Özdemir
+                                    </span>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400 leading-none truncate">
+                                        uzun title. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius eligendi vel ducimus sint sed necessitatibus dolor illum soluta rem nihil commodi, esse debitis eum, labore, dolorum tempora autem eveniet maiores.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- *Profil Dropdown -->
+                        <ul class="py-1">
+                            <!-- <li>
+                                <a class="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+                                    <iconify-icon icon="line-md:person" class="text-base"></iconify-icon>
+                                    <span data-i18n="profil">Profil</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <div class="my-1 border-t border-gray-200 dark:border-gray-800"></div>
+                            </li> -->
+
+                            <li class="px-2 py-1">
+                                <a class="eo-btn eo-btn-outline-dark w-full justify-center" href="../templates/auth1_giris.html" data-i18n="cikis">
+                                    Çıkış Yap
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex flex-col lg:flex-row grow pt-header-mobile lg:pt-header overflow-hidden">
+            <!-- Sidebar Overlay (Mobil) -->
+            <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-20 lg:hidden hidden transition-opacity"></div>
+            <div class="flex flex-col lg:flex-row flex-1 min-h-0 rounded-xl bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 m-2.5 -mt-2.5 overflow-hidden">
+                <!-- !Sidebar -->
+                <aside id="sidebar" class="fixed lg:static top-0 left-0 h-full z-30 lg:z-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 lg:transition-none w-(--sidebar-width-mobile) lg:w-64 bg-white dark:bg-gray-900 lg:border-r border-gray-300 dark:border-gray-700 overflow-y-auto shrink-0">
+                    <div class="p-2.5 pt-3.5">
+                        <!-- Sidebar Header (Mobil) -->
+                        <div class="lg:hidden flex items-center justify-end mb-3 pb-3 border-b border-gray-200 dark:border-gray-800">
+                            <button id="closeSidebar" class="eo-header-btn eo-btn-icon">
+                                <iconify-icon icon="line-md:arrow-close-left" class="text-lg"></iconify-icon>
+                            </button>
+                        </div>
+
+                        <!-- *Sidebar Links -->
+                        <nav class="space-y-0.5">
+                            <a href="../templates/index.html" class="sidebar-link">
+                                <iconify-icon icon="line-md:home-md" class="text-base"></iconify-icon>
+                                <span data-i18n="anasayfa">Anasayfa</span>
+                            </a>
+
+                            <div class="pt-2.5">
+                                <div class="px-2 pb-1 text-xs font-medium text-gray-900 dark:text-gray-50" data-i18n="talepler">
+                                    Talepler
+                                </div>
+
+                                <a href="../templates/p1a_talep_olustur.html" class="sidebar-link">
+                                    <iconify-icon icon="line-md:file-document-plus"></iconify-icon>
+                                    <span data-i18n="talepOlustur">Talep Oluştur</span>
+                                </a>
+
+                                <a href="../templates/p2_taleplerim.html" class="sidebar-link">
+                                    <iconify-icon icon="line-md:document-list"></iconify-icon>
+                                    <span data-i18n="taleplerim">Taleplerim</span>
+                                </a>
+                            </div>
+
+                            <div class="pt-2.5">
+                                <div class="px-2 pb-1 text-xs font-medium text-gray-900 dark:text-gray-50" data-i18n="talepOnayi">
+                                    Talep Onayı
+                                </div>
+
+                                <a href="../templates/y1_onay_liste.html" class="sidebar-link">
+                                    <iconify-icon icon="line-md:clipboard-check"></iconify-icon>
+                                    <span data-i18n="onayListesi">Onay Listesi</span>
+                                </a>
+
+                                <a href="../templates/y2_sonlanan.html" class="sidebar-link">
+                                    <iconify-icon icon="line-md:folder-filled"></iconify-icon>
+                                    <span data-i18n="sonlananTalepler">Sonlanan Talepler</span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </aside>
+
+                <div class="flex flex-col flex-1 min-h-0 p-3.5">
+                    <!-- !Muhteva: Başlangıç -->
+                    <div class="flex-1 min-h-0 overflow-y-auto thin-scrollbar bg-zinc-100 dark:bg-gray-800 p-3.5 rounded-lg">
+                        <div class="flex flex-col gap-3.5">
+                            <div class="card">
+                                <div class="card-header border-b-0 px-2.5 sm:px-3.5">
+                                    <div class="card-title">
+                                        115511 Gider Faturası Talebi
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2">
+
+
+                                    <div class="font-bold border-t border-gray-200 dark:border-white/25 p-2.5 sm:px-3.5 sm:py-2.5 col-span-full bg-gray-100 dark:bg-gray-900" data-i18n="talepEden">
+                                        Talep Eden Bilgileri
+                                    </div>
+
+                                    <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="sicilNo">Sicil No</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">00001943</div>
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="departman">Departman</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">Satış Pazarlama</div>
+                                    </div>
+
+                                    <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="adSoyad">Adı Soyadı</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">Antonio Banderas</div>
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="unvan">Ünvan</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">Satış Ekip Lideri</div>
+                                    </div>
+
+
+                                    <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="sirket">Şirket</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">Anonim</div>
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="pozisyon">Pozisyon</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">ST</div>
+                                    </div>
+
+
+
+                                    <div class="font-bold border-t border-gray-200 dark:border-white/25 p-2.5 sm:px-3.5 sm:py-2.5 col-span-full bg-gray-100 dark:bg-gray-900" data-i18n="talepBilgileri">
+                                        Talep Bilgileri
+                                    </div>
+
+                                    <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="belgeNo">Belge No</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300 font-bold">2512345</div>
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="tarih">Tarih</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">11.02.2024</div>
+                                    </div>
+
+                                    <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="talepTuru">Talep Türü</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">Masraf Talebi</div>
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="talepAcilanSirket">Talep Açılan Şirket</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">Anonim</div>
+                                    </div>
+
+                                    <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="belgeTipi">Belge Tipi</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">SOS24</div>
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="faturaBelgesi">Fatura Belgesi</div>
+                                        <a href="#" class="text-sm/6 text-gray-800 dark:text-gray-200 font-bold underline hover:text-blue-500 flex items-center gap-1">
+                                            <iconify-icon icon="line-md:file" class="mt-1 font-bold"></iconify-icon>
+                                            fatura120124.pdf
+                                        </a>
+                                    </div>
+
+
+                                    <div class="font-bold border-t border-gray-200 dark:border-white/25 p-2.5 sm:px-3.5 sm:py-2.5 col-span-full bg-gray-100 dark:bg-gray-900" data-i18n="faturaBilgileri">
+                                        Fatura Bilgileri
+                                    </div>
+
+                                    <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200 text-nowrap pe-3.5 xl:pe-0" data-i18n="tedarikci">Tedarikçi Firma</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300 truncate">SONEPAR DEUTSCHLAND / REGION SUED GM</div>
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="firmaKodu">Firma Kodu</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">332364</div>
+                                    </div>
+
+                                    <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="faturaNo">Fatura No</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">1254856</div>
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="faturaTutari">Fatura Tutarı</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300 font-bold">€250</div>
+                                    </div>
+
+                                    <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200 text-nowrap pe-3.5 xl:pe-0" data-i18n="servisKalemi">Servis Kalemi</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300 truncate">SA06-001142 / 2-SA06-720-ÜRETİM DİREKT İ.K. BÜTÇESİ</div>
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200 text-nowrap pe-3.5 xl:pe-0" data-i18n="butceKalemi">Bütçe Kalemi</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300 truncate">SA06-001142 / 2-SA06-720-ÜRETİM DİREKT İ.K. BÜTÇESİ</div>
+                                    </div>
+
+                                    <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="miktar">Miktar</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">3</div>
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-1 sm:px-3.5 sm:py-2.5 hidden sm:flex justify-between">
+                                    </div>
+
+                                    <div class="border-t border-gray-200 dark:border-white/25 p-2.5 sm:col-span-2 sm:px-3.5 sm:py-5">
+                                        <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200 mb-2" data-i18n="reddedilmeNedeni">Reddedilme Nedeni</div>
+                                        <div class="text-sm/6 text-gray-700 dark:text-gray-300">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis aliquid veritatis saepe vero, eligendi officia cum aut temporibus culpa similique molestias impedit facilis! Autem saepe ex commodi facilis. Consectetur, facilis.</div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="flow-root">
+                                        <ul role="list" class="-mb-8">
+                                            <li>
+                                            <div class="relative pb-8">
+                                                <span aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></span>
+                                                <div class="relative flex space-x-3">
+                                                    <div>
+                                                        <span class="flex size-8 items-center justify-center rounded-full bg-blue-500 ring-8 ring-white dark:ring-gray-800">
+                                                            <iconify-icon icon="line-md:file-document-plus" class="text-lg text-white font-extrabold"></iconify-icon>
+                                                        </span>
+                                                    </div>
+                                                    <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                                                        <div>
+                                                            <div class="text-sm text-gray-500 dark:text-gray-400">
+                                                                <div class="font-medium text-gray-900 inline dark:text-gray-200">Mustafa Ensar Özdemir</div>
+                                                                <span data-i18n="olusturdu">
+                                                                    talep oluşturdu.
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="text-right text-sm whitespace-nowrap text-gray-500 dark:text-gray-300">
+                                                            <div class="flex text-xs">
+                                                                12.11.2025
+                                                                <span class="hidden sm:flex ml-1"> - 12.00</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="relative pb-8">
+                                                    <span aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></span>
+                                                    <div class="relative flex space-x-3">
+                                                        <div>
+                                                            <span class="flex size-8 items-center justify-center rounded-full bg-green-500 ring-8 ring-white dark:ring-gray-800">
+                                                                <iconify-icon icon="line-md:confirm-circle" class="text-lg text-white font-extrabold"></iconify-icon>
+                                                            </span>
+                                                        </div>
+                                                        <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                                                            <div>
+                                                                <div class="text-sm text-gray-500 dark:text-gray-400">
+                                                                    <div class="font-medium text-gray-900 inline dark:text-gray-200">Mustafa Ensar Özdemir</div>
+                                                                    <span data-i18n="onayladi">
+                                                                        tarafından onaylandı.
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="text-right text-sm whitespace-nowrap text-gray-500 dark:text-gray-300">
+                                                                <div class="flex text-xs">
+                                                                    12.11.2025
+                                                                    <span class="hidden sm:flex ml-1"> - 12.00</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="relative pb-8">
+                                                    <span aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></span>
+                                                    <div class="relative flex space-x-3">
+                                                        <div>
+                                                            <span class="flex size-8 items-center justify-center rounded-full bg-red-500 ring-8 ring-white dark:ring-gray-800">
+                                                                <iconify-icon icon="line-md:close-circle" class="text-lg text-white font-extrabold"></iconify-icon>
+                                                            </span>
+                                                        </div>
+                                                        <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                                                            <div>
+                                                                <div class="text-sm text-gray-500 dark:text-gray-400">
+                                                                    <div class="font-medium text-gray-900 inline dark:text-gray-200">Mustafa Ensar Özdemir</div>
+                                                                    <span data-i18n="reddedildi">
+                                                                        tarafından reddedildi.
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="text-right text-sm whitespace-nowrap text-gray-500 dark:text-gray-300">
+                                                                <div class="flex text-xs">
+                                                                    12.11.2025
+                                                                    <span class="hidden sm:flex ml-1"> - 12.00</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            
+                                            <li>
+                                                <div class="relative pb-8">
+                                                    <div class="relative flex space-x-3">
+                                                        <div>
+                                                            <span class="flex size-8 items-center justify-center rounded-full bg-amber-500 ring-8 ring-white dark:ring-gray-800">
+                                                                <iconify-icon icon="line-md:loading-loop" class="text-lg text-white font-extrabold"></iconify-icon>
+                                                                
+                                                            </span>
+                                                        </div>
+                                                        <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                                                            <div>
+                                                                <div class="text-sm text-gray-500 dark:text-gray-400">
+                                                                    <div class="font-medium text-gray-900 inline dark:text-gray-200">Mustafa Ensar Özdemir</div>
+                                                                    <span data-i18n="bekliyor">
+                                                                        onayı bekleniyor.
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="text-right text-sm whitespace-nowrap text-gray-500 dark:text-gray-300">
+                                                                <div class="flex text-xs">
+                                                                    12.11.2025
+                                                                    <span class="hidden sm:flex ml-1"> - 12.00</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="m-2.5 flex items-center justify-end gap-x-2.5">
+                                    <button data-i18n="reddet" command="show-modal" commandfor="talep_reddet" class="eo-btn eo-btn-danger">
+                                        Reddet
+                                    </button>
+                                    <button data-i18n="onayla" type="submit" class="eo-btn eo-btn-primary">
+                                        Onayla
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- !Muhteva: Sonu -->
+                    </div>
+                </div>
+
+                <el-dialog>
+                    <dialog id="talep_reddet" aria-labelledby="dialog-title" class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
+                        <el-dialog-backdrop class="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"></el-dialog-backdrop>
+
+                        <div tabindex="0" class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0">
+                        <el-dialog-panel class="relative transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 px-4 pt-5 pb-4 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95">
+                            <div class="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
+                            <button type="button" command="close" commandfor="talep_reddet" class="rounded-md bg-white dark:bg-gray-800 text-gray-400 hover:text-red-500 focus:outline-2 focus:outline-offset-2 focus:outline-red-600 cursor-pointer">
+                                 <iconify-icon icon="line-md:close-small" class="text-2xl"></iconify-icon>
+                            </button>
+                            </div>
+                            <div class="sm:flex sm:items-start">
+                            <div class="mx-auto flex size-15 shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900 sm:mx-0 sm:size-10">
+                                <iconify-icon icon="line-md:alert-loop" class="text-3xl text-red-600 dark:text-red-400"></iconify-icon> 
+                            </div>
+                            <div class="text-center mt-3.5 sm:mt-0 sm:ml-4 sm:text-left">
+                                <div class="text-gray-700 dark:text-gray-200">
+                                    <span data-i18n="reddetmeIstegi">
+                                        Talebi reddetmek istediğinize emin misiniz?
+                                    </span>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">"115511 Gider Faturası Talebi"</p>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="mt-3.5">
+                                <label for="comment" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-100" data-i18n="reddedilmeNedeni">Reddetme Nedeni</label>
+                                <div class="mt-2">
+                                    <textarea name="" rows="3" class="block w-full rounded-md bg-white dark:bg-gray-900 px-3 py-1.5 text-gray-900 dark:text-gray-100 outline-1 -outline-offset-1 outline-gray-300 dark:outline-gray-700 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 dark:focus:outline-blue-400 text-sm sm:text-sm/6"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-end gap-2.5 mt-3.5">
+                                <button type="button" command="close" commandfor="talep_reddet" class="eo-btn eo-btn-light dark:eo-btn-dark" data-i18n="iptal">İptal</button>
+                                <button type="submit" class="eo-btn eo-btn-danger" data-i18n="reddet">Reddet</button>
+                            </div>
+                        </el-dialog-panel>
+                        </div>
+                    </dialog>
+                </el-dialog>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const defaultThemeMode = 'light'; // light|dark|system
+        let themeMode;
+
+        if (document.documentElement) {
+            if (localStorage.getItem('theme')) {
+                themeMode = localStorage.getItem('theme');
+            } else if (
+                document.documentElement.hasAttribute('data-theme-mode')
+            ) {
+                themeMode =
+                    document.documentElement.getAttribute('data-theme-mode');
+            } else {
+                themeMode = defaultThemeMode;
+            }
+
+            if (themeMode === 'system') {
+                themeMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark'
+                    : 'light';
+            }
+
+            document.documentElement.classList.add(themeMode);
+        }
+
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle?.addEventListener('click', () => {
+            const html = document.documentElement;
+            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            html.classList.remove('dark', 'light');
+            html.classList.add(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="https://unpkg.com/i18next@25.6.0/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend@2.6.1/i18nextHttpBackend.min.js"></script>
+    <script type="module" src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+</body>
+</html>

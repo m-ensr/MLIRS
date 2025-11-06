@@ -1,0 +1,28 @@
+{
+  "name": "mlirs",
+  "version": "1.0.0",
+  "description": "Multi Language Invoice Request System",
+  "main": "index.js",
+  "author": {
+    "name": "Ensar Özdemir",
+    "email": "ensarozdm@gmail.com",
+    "url": "https://github.com/m-ensr"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m-ensr/MLIRS"
+  },
+  "scripts": {
+    "build-css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
+    "build": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.16"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "i18next": "^25.6.0",
+    "i18next-http-backend": "^3.0.2"
+  }
+}

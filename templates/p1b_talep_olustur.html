@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLIRS</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
+    <link href="../assets/css/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 dark:bg-black min-h-screen">
+    <!-- Arka plan - bg-muted -->
+    <div class="flex flex-col h-screen">
+        <header class="flex items-center justify-between fixed z-10 top-0 start-0 end-0 shrink-0 bg-gray-100 dark:bg-black px-4 lg:px-7.5 h-(--header-height-mobile) lg:h-(--header-height)">
+            <!-- !Sol Taraf -->
+            <div class="flex items-center gap-3">
+                <div class="flex gap-2.5 lg:hidden items-center -ms-1">
+                    <!-- Mobil Sidebar Butonu -->
+                    <div class="flex items-center">
+                        <button id="mobil_sidebar_buton" class="eo-header-btn eo-btn-icon">
+                            <iconify-icon icon="line-md:close-to-menu-alt-transition"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Mobil Logo -->
+                    <a class="shrink-0 ms-1" href="../templates/index.html">
+                        <span class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-500 whitespace-nowrap">Logo</span>
+                    </a>
+                </div>
+
+                <!-- Logo -->
+                <div class="hidden lg:flex items-center">
+                    <a href="../templates/index.html" class="flex items-center gap-2 p-1.5 rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 group -ms-2">
+                        <span class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-500 whitespace-nowrap">Logo</span>
+                    </a>
+                </div>
+            </div>
+
+            <!--! Sağ Taraf -->
+            <div class="flex items-center gap-2">
+                <button class="eo-header-btn hidden lg:flex">
+                    <iconify-icon icon="line-md:cog-filled-loop" class="text-md pr-1"></iconify-icon>
+                    Admin
+                </button>
+
+                <button class="eo-btn-icon eo-header-btn" id="flag-toggle" lang="tr">
+                    <iconify-icon icon="circle-flags:tr" id="flag-icon" class="text-lg"></iconify-icon>
+                </button>
+
+                <!-- *Karanlık Şeysi -->
+                <button id="themeToggle" class="eo-header-btn eo-btn-icon">
+                    <iconify-icon icon="line-md:sunny-filled-loop-to-moon-filled-loop-transition" class="dark:hidden text-lg"></iconify-icon>
+                    <iconify-icon icon="line-md:moon-filled-to-sunny-filled-loop-transition" class="hidden dark:inline-block dark:text-gray-50 text-lg"></iconify-icon>
+                </button>
+
+                <!-- *Header Profil -->
+                <div class="relative">
+                    <div id="profil_buton" class="eo-header-avatar">
+                        <img src="../assets/images/avatar/avatar.png" alt="User Avatar">
+                    </div>
+
+                    <div id="profil_menu" class="hidden absolute right-0 mt-2 w-[250px] bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 overflow-hidden z-50">
+                        <div class="flex items-center justify-between px-2.5 py-1.5 border-b border-gray-200 dark:border-gray-800">
+                            <div class="flex items-center gap-1 min-w-0 flex-1">
+                                <div class="w-8 h-8 rounded-lg overflow-hidden shrink-0">
+                                    <img alt="avatar" class="w-full h-full object-cover" src="../assets/images/avatar/avatar.png"/>
+                                </div>
+
+                                <div class="flex flex-col gap-1 p-2.5 min-w-0 flex-1">
+                                    <span class="text-sm text-gray-900 dark:text-white font-semibold leading-none truncate">
+                                        Ensar Özdemir
+                                    </span>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400 leading-none truncate">
+                                        uzun title. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius eligendi vel ducimus sint sed necessitatibus dolor illum soluta rem nihil commodi, esse debitis eum, labore, dolorum tempora autem eveniet maiores.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- *Profil Dropdown -->
+                        <ul class="py-1">
+                            <!-- <li>
+                                <a class="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+                                    <iconify-icon icon="line-md:person" class="text-base"></iconify-icon>
+                                    <span data-i18n="profil">Profil</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <div class="my-1 border-t border-gray-200 dark:border-gray-800"></div>
+                            </li> -->
+
+                            <li class="px-2 py-1">
+                                <a class="eo-btn eo-btn-outline-dark w-full justify-center" href="../templates/auth1_giris.html" data-i18n="cikis">
+                                    Çıkış Yap
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex flex-col lg:flex-row grow pt-header-mobile lg:pt-header overflow-hidden">
+            <!-- Sidebar Overlay (Mobil) -->
+            <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-20 lg:hidden hidden transition-opacity"></div>
+            <div class="flex flex-col lg:flex-row flex-1 min-h-0 rounded-xl bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 m-2.5 -mt-2.5 overflow-hidden">
+                <!-- !Sidebar -->
+                <aside id="sidebar" class="fixed lg:static top-0 left-0 h-full z-30 lg:z-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 lg:transition-none w-(--sidebar-width-mobile) lg:w-64 bg-white dark:bg-gray-900 lg:border-r border-gray-300 dark:border-gray-700 overflow-y-auto shrink-0">
+                    <div class="p-2.5 pt-3.5">
+                        <!-- Sidebar Header (Mobil) -->
+                        <div class="lg:hidden flex items-center justify-end mb-3 pb-3 border-b border-gray-200 dark:border-gray-800">
+                            <button id="closeSidebar" class="eo-header-btn eo-btn-icon">
+                                <iconify-icon icon="line-md:arrow-close-left" class="text-lg"></iconify-icon>
+                            </button>
+                        </div>
+
+                        <!-- *Sidebar Links -->
+                        <nav class="space-y-0.5">
+                            <a href="../templates/index.html" class="sidebar-link">
+                                <iconify-icon icon="line-md:home-md" class="text-base"></iconify-icon>
+                                <span data-i18n="anasayfa">Anasayfas</span>
+                            </a>
+
+                            <div class="pt-2.5">
+                                <div class="px-2 pb-1 text-xs font-medium text-gray-900 dark:text-gray-50" data-i18n="talepler">
+                                    Talepler
+                                </div>
+
+                                <a href="../templates/p1a_talep_olustur.html" class="sidebar-link-aktif">
+                                    <iconify-icon icon="line-md:file-document-plus"></iconify-icon>
+                                    <span data-i18n="talepOlustur">Talep Oluştur</span>
+                                </a>
+
+                                <a href="../templates/p2_taleplerim.html" class="sidebar-link">
+                                    <iconify-icon icon="line-md:document-list"></iconify-icon>
+                                    <span data-i18n="taleplerim">Taleplerim</span>
+                                </a>
+                            </div>
+
+                            <div class="pt-2.5">
+                                <div class="px-2 pb-1 text-xs font-medium text-gray-900 dark:text-gray-50" data-i18n="talepOnayi">
+                                    Talep Onayı
+                                </div>
+
+                                <a href="../templates/y1_onay_liste.html" class="sidebar-link">
+                                    <iconify-icon icon="line-md:clipboard-check"></iconify-icon>
+                                    <span data-i18n="onayListesi">Onay Listesi</span>
+                                </a>
+
+                                <a href="../templates/y2_sonlanan.html" class="sidebar-link">
+                                    <iconify-icon icon="line-md:folder-filled"></iconify-icon>
+                                    <span data-i18n="sonlananTalepler">Sonlanan Talepler</span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </aside>
+
+                <div class="flex flex-col flex-1 min-h-0 p-3.5">
+                    <!-- !Muhteva: Başlangıç -->
+                    <div class="flex-1 min-h-0 overflow-y-auto thin-scrollbar bg-zinc-100 dark:bg-gray-800 p-3.5 rounded-lg">
+                        <form method="post" class="flex flex-col gap-3.5">
+                                <div class="card">
+                                    <div class="space-y-12 sm:space-y-16">
+
+                                        <div>
+                                            <div class="p-3.5">
+                                                <h2 data-i18n="giderTalepPazarlama" class="text-base font-semibold text-gray-900 dark:dark:text-gray-200">
+                                                    Gider Talebi ve Pazarlama Talebi
+                                                </h2>
+
+                                                <p data-i18n="p1b_talepInfo" class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Fatura talebinizi bu formdan yapabilirsiniz.
+                                                </p>
+                                            </div>
+
+                                            <div class="grid grid-cols-1 sm:grid-cols-2">
+                                                <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-4 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                                    <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="sicilNo">Sicil No</div>
+                                                    <div class="text-sm/6 text-gray-700 dark:text-gray-300">00001943</div>
+                                                </div>
+
+                                                <div class="border-t border-gray-200 dark:border-white/25 p-4 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                                    <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="departman">Departman</div>
+                                                    <div class="text-sm/6 text-gray-700 dark:text-gray-300">Satış Pazarlama</div>
+                                                </div>
+
+                                                <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-4 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                                    <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="adSoyad">Adı Soyadı</div>
+                                                    <div class="text-sm/6 text-gray-700 dark:text-gray-300">Antonio Banderas</div>
+                                                </div>
+
+                                                <div class="border-t border-gray-200 dark:border-white/25 p-4 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                                    <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="unvan">Ünvan</div>
+                                                    <div class="text-sm/6 text-gray-700 dark:text-gray-300">Satış Ekip Lideri</div>
+                                                </div>
+
+
+                                                <div class="border-t sm:border-r border-gray-200 dark:border-white/25 p-4 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                                    <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="sirket">Şirket</div>
+                                                    <div class="text-sm/6 text-gray-700 dark:text-gray-300">Anonim</div>
+                                                </div>
+
+                                                <div class="border-t border-gray-200 dark:border-white/25 p-4 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                                    <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="pozisyon">Pozisyon</div>
+                                                    <div class="text-sm/6 text-gray-700 dark:text-gray-300">ST</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="border-t border-b border-gray-200 dark:border-white/25 pb-3.5 divide-y divide-gray-200 dark:divide-white/25 sm:space-y-0 sm:border-t sm:border-b sm:divide-y sm:divide-gray-200 dark:sm:divide-white/25 sm:pb-0">
+
+                                                <!-- &Talep Açılan Şirket -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-2.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span data-i18n="talepAcilanSirket">Talep Açılan Şirket</span>
+                                                        <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <div class="grid grid-cols-1 sm:max-w-md">
+                                                            <select name="" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white dark:bg-white/5 py-1.5 pr-8 pl-3 text-gray-900 dark:text-gray-200 border border-gray-300 focus:outline-2 dark:border-white/10 focus:-outline-offset-1 focus:outline-blue-600 text-sm sm:text-sm/6">
+                                                                <option selected disabled>--</option>
+                                                                <option>Seçenek 1</option>
+                                                                <option>Seçenek 2</option>
+                                                            </select>
+                                                            <iconify-icon data-slot="icon" aria-hidden="true" icon="line-md:chevron-small-down" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"></iconify-icon>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- &Başlık Notu -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-2.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span data-i18n="talepBaslik">Başlık</span>
+                                                        <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <input type="text" name="" data-i18n-placeholder="talepBaslik_placeholder" placeholder="Başlık Notunu girin.." class="block w-full rounded-md bg-white dark:bg-white/5 px-3 py-1.5 text-gray-900 dark:text-gray-200 border border-gray-300 dark:border-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-1 focus:outline-blue-600 sm:max-w-md text-sm sm:text-sm/6" />
+                                                    </div>
+                                                </div>
+
+                                                <!-- &Belge Tipi -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-2.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span data-i18n="belgeTipi">Belge Tipi</span>
+                                                        <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <div class="grid grid-cols-1 sm:max-w-md">
+                                                            <select name="" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white dark:bg-white/5 py-1.5 pr-8 pl-3 text-gray-900 dark:text-gray-200 border border-gray-300 focus:outline-2 dark:border-white/10 focus:-outline-offset-1 focus:outline-blue-600 text-sm sm:text-sm/6">
+                                                                <option selected disabled>--</option>
+                                                                <option>Seçenek 1</option>
+                                                                <option>Seçenek 2</option>
+                                                            </select>
+                                                            <iconify-icon data-slot="icon" aria-hidden="true" icon="line-md:chevron-small-down" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"></iconify-icon>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- &Fatura No -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-2.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span data-i18n="faturaNo">Fatura No</span>
+                                                        <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <input type="text" name="" data-i18n-placeholder="faturaNo_placeholder" placeholder="Fatura No girin.." class="block w-full rounded-md bg-white dark:bg-white/5 px-3 py-1.5 text-gray-900 dark:text-gray-200 border border-gray-300 dark:border-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-1 focus:outline-blue-600 sm:max-w-md text-sm sm:text-sm/6" />
+                                                    </div>
+                                                </div>
+
+                                                <!-- &Fatura Belge -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-1.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span data-i18n="faturaBelgesi">Fatura Belgesi</span>
+                                                        <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <div class="relative">
+                                                            <input type="file" name="" placeholder="" class="block w-full rounded-md bg-white dark:bg-white/5 text-sm sm: text-gray-900 dark:text-gray-200 border border-gray-300 focus:outline-2 dark:border-white/10 focus:-outline-offset-1 focus:outline-blue-600 sm:max-w-md sm:text-sm/6 file:mr-3 file:py-1.5 file:px-3 file:rounded-l-md file:border-0 file:text-sm file:font-medium file:bg-gray-100 dark:file:bg-gray-700 file:text-gray-700 dark:file:text-gray-300 hover:file:bg-gray-200 dark:hover:file:bg-gray-600 file:cursor-pointer" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- &Adres -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-2.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span data-i18n="adres">Adres</span>
+                                                        <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <textarea name="" data-i18n-placeholder="adres_placeholder" placeholder="Fatura Adresini giriniz.." rows="2" class="w-full sm:max-w-md appearance-none rounded-md bg-white dark:bg-white/5 py-1.5 pr-8 pl-3 text-gray-900 dark:text-gray-200 border border-gray-300 focus:outline-2 dark:border-white/10 focus:-outline-offset-1 focus:outline-blue-600 text-sm sm:text-sm/6"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <!-- &Fatura Tutarı -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-2.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span class="inline-flex items-center gap-1 group cursor-pointer" id="fatura-tutar-label" data-tippy-content="500 EUR altı sadece yönetici onayı, 500 EUR üstü yönetici + son onaycı onayı gerekir." tabindex="0">
+                                                            <span data-i18n="faturaTutari">Fatura Tutarı</span>
+                                                            <span class="text-red-500">*</span>
+                                                            <iconify-icon icon="line-md:alert-circle-loop" class="text-red-600 text-md"></iconify-icon>
+                                                        </span>
+                                                    </label>
+
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <div class="flex items-center rounded-md bg-white dark:bg-white/5 px-3 border border-gray-300 dark:border-white/10 placeholder:text-gray-400 focus-within:outline-2 focus-within:-outline-offset-1 focus-within:outline-blue-600 sm:max-w-md">
+                                                            <div class="shrink-0 text-gray-900 dark:text-gray-200 select-none text-sm sm:text-sm/6">€</div>
+                                                            <input type="number" name="" placeholder="0.00" class="block min-w-0 grow bg-white dark:bg-transparent py-1.5 pr-3 pl-1 text-gray-900 dark:text-gray-200 placeholder:text-gray-400 focus:outline-hidden text-sm sm:text-sm/6" />
+                                                            <div class="shrink-0 text-gray-500 select-none text-sm sm:text-sm/6">EUR</div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="space-y-12 sm:space-y-16">
+                                        <div>
+                                            <div class="grid grid-cols-1 sm:grid-cols-2">
+                                                <div class="sm:border-t-0 sm:border-r border-gray-200 dark:border-white/25 p-4 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                                    <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200 text-nowrap me-2" data-i18n="tedarikci">Ted. Firma</div>
+                                                    <div class="text-sm/6 text-gray-800 dark:text-gray-200 truncate">MOSTER ELEKTROGROSSHANDELSGES. mbH</div>
+                                                </div>
+
+                                                <div class="border-t sm:border-t-0 border-gray-200 dark:border-white/25 p-4 sm:col-span-1 sm:px-3.5 sm:py-2.5 flex justify-between">
+                                                    <div class="text-sm/6 font-medium text-gray-900 dark:text-gray-200" data-i18n="firmaKodu">Firma Kodu</div>
+                                                    <div class="text-sm/6 text-gray-700 dark:text-gray-300">102235235</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="border-t border-b border-gray-200 dark:border-white/25 pb-3.5 divide-y divide-gray-200 dark:divide-white/25 sm:space-y-0 sm:border-t sm:border-b sm:divide-y sm:divide-gray-200 dark:sm:divide-white/25 sm:pb-0">
+
+                                                <!-- &Servis Kalemi -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-2.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span data-i18n="servisKalemi">Servis Kalemi</span>
+                                                        <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <div class="grid grid-cols-1 sm:max-w-md">
+                                                            <select name="" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white dark:bg-white/5 py-1.5 pr-8 pl-3 text-gray-900 dark:text-gray-200 border border-gray-300 focus:outline-2 dark:border-white/10 focus:-outline-offset-1 focus:outline-blue-600 text-sm sm:text-sm/6">
+                                                                <option selected disabled>--</option>
+                                                                <option>Seçenek 1</option>
+                                                                <option>Seçenek 2</option>
+                                                            </select>
+                                                            <iconify-icon data-slot="icon" aria-hidden="true" icon="line-md:chevron-small-down" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"></iconify-icon>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- &Bütçe Kalemi -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-2.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span data-i18n="butceKalemi">Bütçe Kalemi</span>
+                                                        <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <div class="grid grid-cols-1 sm:max-w-md">
+                                                            <select name="" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white dark:bg-white/5 py-1.5 pr-8 pl-3 text-gray-900 dark:text-gray-200 border border-gray-300 focus:outline-2 dark:border-white/10 focus:-outline-offset-1 focus:outline-blue-600 text-sm sm:text-sm/6">
+                                                                <option selected disabled>--</option>
+                                                                <option>Seçenek 1</option>
+                                                                <option>Seçenek 2</option>
+                                                            </select>
+                                                            <iconify-icon data-slot="icon" aria-hidden="true" icon="line-md:chevron-small-down" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"></iconify-icon>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- &Mal Hizmet Tanımı -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-2.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span data-i18n="malHizmetTanimi">Mal Hizmet Tanımı</span>
+                                                        <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <div class="grid grid-cols-1 sm:max-w-md">
+                                                            <select name="" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white dark:bg-white/5 py-1.5 pr-8 pl-3 text-gray-900 dark:text-gray-200 border border-gray-300 focus:outline-2 dark:border-white/10 focus:-outline-offset-1 focus:outline-blue-600 text-sm sm:text-sm/6">
+                                                                <option selected disabled>--</option>
+                                                                <option">Seçenek 1</option>
+                                                                <option>Seçenek 2</option>
+                                                            </select>
+                                                            <iconify-icon data-slot="icon" aria-hidden="true" icon="line-md:chevron-small-down" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"></iconify-icon>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- &Miktar -->
+                                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 px-3.5 py-2.5">
+                                                    <label for="" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-200 sm:pt-1.5">
+                                                        <span data-i18n="miktar">Miktar</span>
+                                                        <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                                                        <input type="text" name="" data-i18n-placeholder="miktar_placeholder" placeholder="Miktar girin.." class="block w-full rounded-md bg-white dark:bg-white/5 px-3 py-1.5 dark:border-white/10 text-gray-900 dark:text-gray-200 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-1 focus:outline-blue-600 sm:max-w-md text-sm sm:text-sm/6" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="m-2.5 flex items-center justify-end gap-x-2.5">
+                                                <a data-i18n="geri" href="p1a_talep_olustur.html" class="eo-btn eo-btn-danger">
+                                                    Geri Dön
+                                                </a>
+                                                <button data-i18n="kaydet" type="submit" class="eo-btn eo-btn-primary">
+                                                    Kaydet
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </form>
+                        <!-- !Muhteva: Sonu -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const defaultThemeMode = 'light'; // light|dark|system
+        let themeMode;
+
+        if (document.documentElement) {
+            if (localStorage.getItem('theme')) {
+                themeMode = localStorage.getItem('theme');
+            } else if (
+                document.documentElement.hasAttribute('data-theme-mode')
+            ) {
+                themeMode =
+                    document.documentElement.getAttribute('data-theme-mode');
+            } else {
+                themeMode = defaultThemeMode;
+            }
+
+            if (themeMode === 'system') {
+                themeMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark'
+                    : 'light';
+            }
+
+            document.documentElement.classList.add(themeMode);
+        }
+
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle?.addEventListener('click', () => {
+            const html = document.documentElement;
+            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            html.classList.remove('dark', 'light');
+            html.classList.add(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="https://unpkg.com/i18next@25.6.0/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend@2.6.1/i18nextHttpBackend.min.js"></script>
+    <script type="module" src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+</body>
+</html>
