@@ -84,6 +84,14 @@
   @apply flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-lg text-blue-500 dark:text-blue-400 border border-gray-300 transition-colors;
 }
 
+@utility sidebar-badge {
+  @apply inline-flex items-center rounded-md px-2 py-1 text-xs font-medium text-gray-400 inset-ring bg-gray-400/10 inset-ring-gray-400/20;
+}
+
+@utility sidebar-badge-aktif {
+  @apply inline-flex items-center rounded-md px-2 py-1 text-xs font-medium text-blue-400 inset-ring bg-blue-400/10 inset-ring-blue-400/20;
+}
+
 @utility thin-scrollbar {
   /* Custom Scrollbar Styles */
   scrollbar-width: thin;
